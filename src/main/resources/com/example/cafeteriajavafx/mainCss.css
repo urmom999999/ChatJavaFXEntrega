@@ -1,0 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Jersey+10&display=swap');
+*, .review-body {
+  font-family: "Jersey 10", sans-serif !important;
+  font-weight: 400 !important;
+}
+.root {
+    -fx-font-family:'Jersey 10';
+    -fx-text-fill:#9CC5E2;
+    -fx-font-color:#9CC5E2;
+}
+.background-pane {
+-fx-background-image: url('cafe.jpg');
+    -fx-background-size: cover;
+    -fx-background-position: center;
+    -fx-background-repeat: no-repeat;
+
+    -fx-pref-width: 720px;
+    -fx-pref-height: 480px;
+    -fx-min-width: 720px;
+    -fx-min-height: 480px;
+    -fx-max-width: 720px;
+    -fx-max-height: 480px;
+}
+#titulo{
+-fx-font-family:'Jersey 10';
+-fx-font-size: 40px;
+-fx-background-color:black;
+}
+
+#colaClientesText,#colaclientes,#estado,#estadoCamarerosText,#estadocafe,#estadoCafeteriaText{
+-fx-font-family:'Jersey 10';
+}
+.button{
+-fx-text-fill:#397DCA;
+-fx-font-size: 20px;
+-fx-font-family:'Jersey 10';
+-fx-background-color: #60A85A;
+-fx-text-fill: white;
+}
+.button:hover {
+    -fx-text-fill: #7CBFA7;
+}
+.text{
+-fx-background-color:red;
+}
+.button:pressed {
+-fx-text-fill: #FFFFFF;
+}
+
