@@ -1,8 +1,8 @@
-module com.example.cafeteriajavafx {
+module com.example.chatjavafx {
     requires javafx.controls;
     requires javafx.fxml;
 
 
-    opens com.example.cafeteriajavafx to javafx.fxml;
-    exports com.example.cafeteriajavafx;
+    opens com.example.chatjavafx to javafx.fxml;
+    exports com.example.chatjavafx;
 }
