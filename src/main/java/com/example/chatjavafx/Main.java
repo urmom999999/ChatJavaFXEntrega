@@ -7,7 +7,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+/*
+usuarios: crear servidor?
+         unirse
 
+extra: tiempo
+        /kick usuario
+
+*/
 public class Main extends Application {
 
     @Override

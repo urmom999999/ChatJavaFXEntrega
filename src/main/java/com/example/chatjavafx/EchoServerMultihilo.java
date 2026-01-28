@@ -5,12 +5,18 @@ import java.net.*;
 import java.util.*;
 import java.util.concurrent.*;
 
-public class EchoServerMultihilo {
+public class EchoServerMultihilo extends ChatController {
     private static final int PUERTO = 8080;
     private static final int MAX_CLIENTES = 10;
     private static final List<PrintWriter> clientWriters = new ArrayList<>();
+    private static int testNumber=0;
+
 
     public static void main(String[] args) {
+        testNumber++;
+        String serverNameTest="Server"+testNumber;
+
+        System.out.println("Nombre del servidor: " + serverNameTest);
         System.out.println("Puerto " + PUERTO);
         System.out.println("Esperando conexion...\n");
 

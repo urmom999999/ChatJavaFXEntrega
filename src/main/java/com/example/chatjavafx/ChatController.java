@@ -2,19 +2,26 @@ package com.example.chatjavafx;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.control.Button;
+
 import java.io.*;
 import java.net.*;
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.Date;
+
 
 public class ChatController {
-
+    public String serverName;
     @FXML
     private TextArea chatArea;
 
     @FXML
     private TextField messageField;
+    @FXML
+    private TextField messageServer;
 
     private Socket socket;
     private PrintWriter out;
@@ -22,21 +29,74 @@ public class ChatController {
     private boolean connected = false;
     private Thread receiveThread;
     private String username;
-
+    private ArrayList arrayNames;
+    private Date time;
+    private Boolean kickMessage=false;
     @FXML
     private void initialize() {
         // Inicializar el chatArea
         chatArea.setWrapText(true);
+        Platform.runLater(() -> {
+            appendToChat("Bienvenido al chat");
 
+            //appendToChat(serverNameTest);
+
+            messageField.requestFocus();
+        });
 //CONEXION CON SERVER!
+/*
         Platform.runLater(() -> {
             connectToServer();
-        });
+        });*/
+    }
+    @FXML
+    private void createServer() {
+        String messageTest = messageServer.getText().trim();
+        if (messageTest.isEmpty()) {
+            Platform.runLater(() -> {
+                appendToChat("ERROR! Escribe el nombre del nuevo servidor");
+            });
+
+        }
+        else{
+            serverName = messageTest;
+            connectToServer();
+
+
+            //RUN SERVER DESDE AQUI??
+            //serverTest400
+           //EchoServerMultihilo;
+
+            //serverTest400.run();
+        }
+    }
+    @FXML
+    private void checkServer() {
+        //LOGICA PARA COMPROBAR SI EL TEXT AREA ES IGUAL A NOMBRE?
+        // messageServer
+        String messageTest = messageServer.getText().trim();
+        //for(int i = 0; i <10; i++){
+        // if(messageTest== messageServer[i]){
+        //serverName=messageServer[i]
+        //connectToServer(serverName);
+        // break;
+        // }}
+        //
     }
 
+    @FXML
     private void connectToServer() {
-        if (connected) return;
+        //serverName;
 
+        if (connected) return;
+        String messageTest = messageServer.getText().trim();
+        if(messageTest.isEmpty()){
+            Platform.runLater(() -> {
+                appendToChat("Error, escribe el nombre del servidor");
+                //appendToChat(serverNameTest);
+                messageField.requestFocus();
+            });
+        return;}
         new Thread(() -> {
             try {
 
@@ -50,6 +110,7 @@ public class ChatController {
                 Platform.runLater(() -> {
                     appendToChat("Conectado");
                     appendToChat("Escribe tu NOMBRE de usuario para empezar:");
+                    //appendToChat(serverNameTest);
                     messageField.requestFocus();
                 });
 
@@ -88,6 +149,7 @@ public class ChatController {
         }
 
         String message = messageField.getText().trim();
+        //checkKickMessage();
         if (!message.isEmpty()) {
             try {
                 out.println(message);
@@ -96,9 +158,16 @@ public class ChatController {
                 if (username == null) {
                     username = message;
                     appendToChat("Nombre: " + username);
-                } else {
-                    appendToChat(username + ": " + message);
+
                 }
+                else if(kickMessage){
+                    appendToChat("Kick message enviado");
+                }else {
+
+                    appendToChat(username + ": " + message);
+                    //appendToChat(Date);
+                }
+
 
                 messageField.clear();
 
@@ -109,7 +178,11 @@ public class ChatController {
             }
         }
     }
+private <message> void checkKickMessage(){
 
+        //message[i]
+
+}
     private void receiveMessages() {
         try {
             String serverMessage;

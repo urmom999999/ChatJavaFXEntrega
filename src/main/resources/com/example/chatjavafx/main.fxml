@@ -7,9 +7,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="10" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatjavafx.ChatController">
+<VBox spacing="10" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/24.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.chatjavafx.ChatController">
 
     <Label style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;" text="Chat Sockets" />
+   <HBox spacing="10">
+      <children>
+         <TextField fx:id="messageServer" onAction="#sendMessage" promptText="Escribe el nombre del servidor..." HBox.hgrow="ALWAYS" />
+          <Button fx:id="buttonCreateServer" onAction="#createServer" defaultButton="true"  text="Crear" />
+         <Button fx:id="buttonServer" onAction="#connectToServer" defaultButton="true"  text="Unirse" />
+      </children>
+   </HBox>
 
     <TextArea fx:id="chatArea" editable="false" prefHeight="270.0" prefWidth="347.0" style="-fx-font-family: 'Consolas', monospace; -fx-font-size: 14px;" wrapText="true" VBox.vgrow="ALWAYS" />
 
